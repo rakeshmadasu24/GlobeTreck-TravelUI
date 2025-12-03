@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "title": "Bali Beaches & Waterfalls",
+    "region": "asia",
+    "price": 899,
+    "budget": "500-1000",
+    "days": "7D",
+    "image": "Images/Bali &beaches.png",
+    "tags": ["🌴 Relaxed Itinerary", "🏡 Beach View Resort"]
+  },
+  {
+    "id": 2,
+    "title": "Swiss Alps Glacier Express",
+    "region": "europe",
+    "price": 1490,
+    "budget": "above-1000",
+    "days": "6D",
+    "image": " Images/Swiss Alps Glacier Express.png",
+    "tags": ["🚆 Scenic Train", "❄ Mountain Peaks"]
+  },
+  {
+    "id": 3,
+    "title": "New York City Lights Tour",
+    "region": "america",
+    "price": 780,
+    "budget": "500-1000",
+    "days": "4D",
+    "image": " Images/New York City Lights Tour.png",
+    "tags": ["🗽 NYC Tour", "🎭 Broadway Ticket"]
+  },
+  {
+    "id": 4,
+    "title": "Bangkok Night Markets & Temples",
+    "region": "asia",
+    "price": 420,
+    "budget": "under-500",
+    "days": "3D",
+    "image": "Images/Bangkok Night Markets & Temples.jpg",
+    "tags": ["🍜 Food Tour", "⛩ Temples"]
+  },
+  {
+    "id": 5,
+    "title": "Tokyo Anime & Technology Tour",
+    "region": "asia",
+    "price": 1050,
+    "budget": "above-1000",
+    "days": "5D",
+    "image": "https://images.pexels.com/photos/373285/pexels-photo-373285.jpeg",
+    "tags": ["🎮 Akihabara", "🍣 Sushi Experience"]
+  },
+  {
+    "id": 6,
+    "title": "Paris Eiffel & Museum Explorer",
+    "region": "europe",
+    "price": 950,
+    "budget": "500-1000",
+    "days": "4D",
+    "image": "Images/Paris Eiffel & Museum Explorer.jpg",
+    "tags": ["🖼 Louvre", "🗼 Eiffel Tower"]
+  },
+  {
+    "id": 7,
+    "title": "London Royal Heritage Walk",
+    "region": "europe",
+    "price": 850,
+    "budget": "500-1000",
+    "days": "4D",
+    "image": "Images/London Royal Heritage Walk.jpg",
+    "tags": ["👑 Buckingham", "🎡 London Eye"]
+  },
+  {
+    "id": 8,
+    "title": "Dubai Desert & Skyline Premium",
+    "region": "asia",
+    "price": 1200,
+    "budget": "above-1000",
+    "days": "5D",
+    "image": "https://images.pexels.com/photos/210243/pexels-photo-210243.jpeg",
+    "tags": ["🏜 Desert Safari", "🏙 Burj Khalifa"]
+  },
+  {
+    "id": 9,
+    "title": "Singapore Family Theme Parks",
+    "region": "asia",
+    "price": 750,
+    "budget": "500-1000",
+    "days": "4D",
+    "image": "Images/Singapore Family Theme Parks.jpg",
+    "tags": ["🎢 Universal Studios", "🌿 Gardens by Bay"]
+  },
+  {
+    "id": 10,
+    "title": "Sydney Opera & Beaches",
+    "region": "america",
+    "price": 1300,
+    "budget": "above-1000",
+    "days": "5D",
+    "image": "Images/Sydney Opera & Beaches.jpg",
+    "tags": ["🎶 Opera House", "🏖 Bondi Beach"]
+  },
+  {
+    "id": 11,
+    "title": "Toronto Niagara Weekend",
+    "region": "america",
+    "price": 480,
+    "budget": "under-500",
+    "days": "3D",
+    "image": "Images/Toronto Niagara Weekend.jpg",
+    "tags": ["🌊 Niagara Fall", "🏙 Toronto City"]
+  },
+  {
+    "id": 12,
+    "title": "Los Angeles Hollywood Fun",
+    "region": "america",
+    "price": 890,
+    "budget": "500-1000",
+    "days": "4D",
+    "image": "https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg",
+    "tags": ["🎬 Hollywood", "🌴 Venice Beach"]
+  },
+  {
+    "id": 13,
+    "title": "Venice Gondola Romantic Trip",
+    "region": "europe",
+    "price": 920,
+    "budget": "500-1000",
+    "days": "5D",
+    "image": "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg",
+    "tags": ["🚤 Gondola", "🏛 Canals"]
+  },
+  {
+    "id": 14,
+    "title": "Rome Historic Monuments Tour",
+    "region": "europe",
+    "price": 880,
+    "budget": "500-1000",
+    "days": "4D",
+    "image": "https://images.pexels.com/photos/1797161/pexels-photo-1797161.jpeg",
+    "tags": ["🏛 Colosseum", "⛪ Vatican"]
+  },
+  {
+    "id": 15,
+    "title": "Egypt Pyramids & Nile Cruise",
+    "region": "asia",
+    "price": 1150,
+    "budget": "above-1000",
+    "days": "6D",
+    "image": "https://images.pexels.com/photos/71241/pexels-photo-71241.jpeg",
+    "tags": ["⛵ Nile Cruise", "🗿 Pyramids"]
+  },
+  {
+    "id": 16,
+    "title": "Goa Beaches & Nightlife",
+    "region": "asia",
+    "price": 300,
+    "budget": "under-500",
+    "days": "3D",
+    "image": "Images/Goa Beaches & Nightlife.jpg",
+    "tags": ["🌅 Beach Party", "🍹 Nightlife"]
+  },
+  {
+    "id": 17,
+    "title": "Kerala Backwaters & Ayurveda",
+    "region": "asia",
+    "price": 600,
+    "budget": "500-1000",
+    "days": "4D",
+    "image": "Images/Kerala Backwaters & Ayurveda.jpg",
+    "tags": ["🚤 Boat Stay", "🌿 Ayurveda"]
+  },
+  {
+    "id": 18,
+    "title": "Mumbai Bollywood & City",
+    "region": "asia",
+    "price": 350,
+    "budget": "under-500",
+    "days": "3D",
+    "image": "Images/Mumbai Bollywood & City.jpg",
+    "tags": ["🎬 Film City", "🌇 City Tour"]
+  },
+  {
+    "id": 19,
+    "title": "Delhi Heritage & Shopping",
+    "region": "asia",
+    "price": 250,
+    "budget": "under-500",
+    "days": "3D",
+    "image": "Images/Delhi Heritage & Shopping.jpg",
+    "tags": ["🕌 India Gate", "🛍 Shopping"]
+  },
+  {
+    "id": 20,
+    "title": "Maldives Luxury Overwater Stay",
+    "region": "asia",
+    "price": 1800,
+    "budget": "above-1000",
+    "days": "5D",
+    "image": "https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg",
+    "tags": ["🏝 Resort", "🤿 Snorkeling"]
+  },
+  {
+    "id": 21,
+    "title": "Bora Bora Honeymoon Package",
+    "region": "asia",
+    "price": 2200,
+    "budget": "above-1000",
+    "days": "6D",
+    "image": "Images/Bora Bora Honeymoon Package.jpg",
+    "tags": ["💞 Honeymoon", "🌊 Overwater Villa"]
+  },
+  {
+    "id": 22,
+    "title": "Hong Kong Disneyland",
+    "region": "asia",
+    "price": 680,
+    "budget": "500-1000",
+    "days": "3D",
+    "image": "Images/Hong Kong Disneyland.jpg",
+    "tags": ["🎡 Theme Park", "🎆 Night Parade"]
+  },
+  {
+    "id": 23,
+    "title": "Thailand Phuket Beaches",
+    "region": "asia",
+    "price": 520,
+    "budget": "500-1000",
+    "days": "4D",
+    "image": "Images/Thailand Phuket Beaches.jpg",
+    "tags": ["🏊 Island Tour", "🐚 Beaches"]
+  },
+  {
+    "id": 24,
+    "title": "Nepal Himalayan Trek",
+    "region": "asia",
+    "price": 450,
+    "budget": "under-500",
+    "days": "5D",
+    "image": "Images/Nepal Himalayan Trek.jpg",
+    "tags": ["🏔 Trekking", "🍃 Nature"]
+  },
+  {
+    "id": 25,
+    "title": "China Great Wall History Trip",
+    "region": "asia",
+    "price": 650,
+    "budget": "500-1000",
+    "days": "5D",
+    "image": "Images/China Great Wall History Trip.jpg",
+    "tags": ["🏯 Great Wall", "🏮 Culture"]
+  },
+  {
+    "id": 26,
+    "title": "Sri Lanka Ella Eco Retreat",
+    "region": "asia",
+    "price": 580,
+    "budget": "500-1000",
+    "days": "4D",
+    "image": "Images/Sri Lanka Ella Eco Retreat.jpg",
+    "tags": ["🌴 Eco Stay", "🚞 Train View"]
+  },
+  {
+    "id": 27,
+    "title": "Bangalore Tech City Tour",
+    "region": "asia",
+    "price": 260,
+    "budget": "under-500",
+    "days": "2D",
+    "image": "Images/Bangalore Tech City Tour.jpg",
+    "tags": ["💻 Tech Hub", "☕ Cafes"]
+  },
+  {
+    "id": 28,
+    "title": "Hyderabad Charminar & Biriyani",
+    "region": "asia",
+    "price": 200,
+    "budget": "under-500",
+    "days": "2D",
+    "image": "Images/Hyderabad Charminar & Biriyani.jpg",
+    "tags": ["🏯 Heritage", "🍗 Food"]
+  },
+  {
+    "id": 29,
+    "title": "Varanasi Ganga Aarti Tour",
+    "region": "asia",
+    "price": 190,
+    "budget": "under-500",
+    "days": "2D",
+    "image": "Images/Varanasi Ganga Aarti Tour.jpg",
+    "tags": ["🕉 Spiritual", "⛵ Boat Ride"]
+  },
+  {
+    "id": 30,
+    "title": "Leh Ladakh Adventure",
+    "region": "asia",
+    "price": 780,
+    "budget": "500-1000",
+    "days": "6D",
+    "image": "Images/Leh Ladakh Adventure.jpg",
+    "tags": ["🏍 Bike Ride", "❄ Snow Peaks"]
+  }
+]

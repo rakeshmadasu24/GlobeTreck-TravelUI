@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GlobeTrek – Travel Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="logo-mark">GT</div>
+      <div class="logo-box">
+        <span class="logo-text">GlobeTrek</span>
+        <small class="logo-sub">Curated trips, zero stress.</small>
+      </div>
+    </div>
+    
+    <div class="nav-links">
+      <a href="#destinations">Destinations</a>
+      <a href="#booking">Book Now</a>
+    </div>
+
+    <div class="nav-cta">
+      <button class="btn btn-primary">Get Started</button>
+    </div>
+
+    <button class="nav-toggle" id="navToggle">
+      ☰ Menu
+    </button>
+  </nav>
+</header>
+
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="hero-dot"></span> Trending: Maldives, Bali, Swiss Alps ✈️</div>
+      
+    <h1 class="hero-heading">
+      Design your next <span>escape</span> in minutes.
+    </h1>
+
+    <p class="hero-subtitle">
+      Discover curated stays & experiences across 40+ countries.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn btn-primary">Explore Top Deals →</button>
+      <button class="btn btn-ghost" onclick="scrollToBooking()">Plan Custom Trip</button>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>10k+</strong> Travelers</div>
+      <div class="hero-stat"><strong>4.9★</strong> Avg Rating</div>
+      <div class="hero-stat"><strong>24/7</strong> Support</div>
+    </div>
+  </div>
+</section>
+
+
+<section class="search-full">
+  <div class="search-card">
+    <div class="search-row">
+
+      <div class="field">
+        <label class="field-label">Destination</label>
+        <div class="field-input big-input" style="position: relative;">
+          <span class="field-icon">📍</span>
+          <input type="text" id="searchDestination" placeholder="Search city, country or place" />
+          <ul id="suggestions" class="suggest-list"></ul>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Check-in</label>
+        <div class="field-input">
+          <span class="field-icon">📅</span>
+          <input type="date" id="checkinDate">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Check-out</label>
+        <div class="field-input">
+          <span class="field-icon">📅</span>
+          <input type="date" id="checkoutDate">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Travelers</label>
+        <div class="field-input">
+          <span class="field-icon">👥</span>
+          <select id="searchTravelers">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4+</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-search" type="button">
+        Search Trips →
+      </button>
+
+    </div>
+  </div>
+</section>
+
+
+<main>
+<section id="destinations">
+  <h2 class="section-title">Featured Getaways</h2>
+
+  <div class="filter-bar">
+    <button class="filter-pill active" data-filter-region="all">All</button>
+    <button class="filter-pill" data-filter-region="asia">Asia</button>
+    <button class="filter-pill" data-filter-region="europe">Europe</button>
+    <button class="filter-pill" data-filter-region="america">America</button>
+
+    <select class="filter-select" id="budgetFilter">
+      <option value="all">Any Budget</option>
+      <option value="under-500">Under $500</option>
+      <option value="500-1000">$500-$1000</option>
+      <option value="above-1000">$1000+</option>
+    </select>
+  </div>
+
+  <div class="packages-grid" id="deals"></div>
+</section>
+
+<section class="booking-section" id="booking">
+  <h2>Send a Booking Request</h2>
+
+  <form class="booking-form" id="bookingForm" novalidate>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="bookingName">Name</label>
+        <input type="text" id="bookingName" class="form-control" placeholder="Your full name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="bookingEmail">Email</label>
+        <input type="email" id="bookingEmail" class="form-control" placeholder="you@example.com" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="bookingPhone">Phone</label>
+        <input type="tel" id="bookingPhone" class="form-control" placeholder="+91 98765 43210" />
+      </div>
+
+      <div class="form-group">
+        <label for="bookingDestination">Destination</label>
+        <select id="bookingDestination" class="form-control">
+          <option value="custom">Custom Trip / Not Listed</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="bookingTravelers">Travelers</label>
+        <input type="number" id="bookingTravelers" class="form-control" min="1" value="2" />
+      </div>
+
+      <div class="form-group">
+        <label for="bookingDate">Date</label>
+        <input type="date" id="bookingDate" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bookingMessage">Message</label>
+      <textarea id="bookingMessage" class="form-control" rows="3" placeholder="Share your trip ideas..."></textarea>
+    </div>
+
+    <button class="btn btn-primary btn-submit" type="submit">
+      Send Request →
+    </button>
+
+    <div id="successMessage" class="success-message"></div>
+  </form>
+</section>
+
+</main>
+
+<div id="detailsModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" id="modalClose">✖</span>
+    <img id="modalImage" class="modal-image" />
+    <h3 id="modalTitle"></h3>
+    <p class="modal-price"><strong>Price:</strong> $<span id="modalPrice"></span></p>
+    <p class="modal-days"><strong>Duration:</strong> <span id="modalDays"></span></p>
+    <p class="modal-region"><strong>Region:</strong> <span id="modalRegion"></span></p>
+    <p class="modal-tags"><span id="modalTags"></span></p>
+    <p class="modal-desc" id="modalDesc"></p>
+    <button class="btn btn-primary" id="bookBtn">Book This Package</button>
+  </div>
+</div>
+
+<footer>
+  © <span id="year"></span> GlobeTrek Travel
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

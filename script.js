@@ -9,6 +9,9 @@ const dealsContainer = document.getElementById("deals");
 const destinationInput = document.getElementById("searchDestination");
 const suggestList = document.getElementById("suggestions");
 const searchBtn = document.querySelector(".btn-search");
+// Filter Elements
+const budgetFilter = document.getElementById("budgetFilter");
+const filterPills = document.querySelectorAll(".filter-pill");
 
 /* =========================
    LOAD DATA (With Error Handling)
@@ -39,103 +42,117 @@ async function loadData() {
   }
 }
 loadData();
+
 /* =========================
-   SEARCH DROPDOWN LOGIC
+   RESTORED: FILTERS (Region + Budget)
 ========================= */
+
+// 1. Region Filter Pills (Asia, Europe, etc.)
+if (filterPills) {
+    filterPills.forEach(btn => {
+        btn.addEventListener("click", () => {
+            // Remove 'active' class from all buttons
+            filterPills.forEach(b => b.classList.remove("active"));
+            // Add 'active' to clicked button
+            btn.classList.add("active");
+            
+            // Run the filter logic
+            applyFilters();
+        });
+    });
+}
+
+// 2. Budget Dropdown
+if (budgetFilter) {
+    budgetFilter.addEventListener("change", () => {
+        applyFilters();
+    });
+}
+
+// 3. Main Filter Logic Function
+function applyFilters() {
+    // Get selected Region
+    const activePill = document.querySelector(".filter-pill.active");
+    const region = activePill ? activePill.dataset.filterRegion : "all";
+
+    // Get selected Budget
+    const budget = budgetFilter.value;
+
+    // Get current Search Text (optional, keeps search valid while filtering)
+    const query = destinationInput ? destinationInput.value.toLowerCase().trim() : "";
+
+    // Filter the list
+    const filtered = travelPackages.filter(pkg => {
+        // Check Region
+        const regionMatch = (region === "all") || (pkg.region === region);
+        
+        // Check Budget (Matches the 'budget' string in your JSON)
+        const budgetMatch = (budget === "all") || (pkg.budget === budget);
+
+        // Check Search Query
+        const searchMatch = !query || pkg.title.toLowerCase().includes(query) || pkg.region.toLowerCase().includes(query);
+
+        return regionMatch && budgetMatch && searchMatch;
+    });
+
+    // Show results
+    renderPackages(filtered);
+}
+
+/* =========================
+   SEARCH FUNCTIONALITY
+========================= */
+if (searchBtn) {
+    searchBtn.addEventListener("click", () => {
+        // Use the filter function so it respects selected regions/budgets too
+        applyFilters();
+        
+        // Scroll to results
+        const destinationsSection = document.getElementById("destinations");
+        if (destinationsSection) {
+            destinationsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    });
+}
+
+// Auto-Suggest Dropdown
 if (destinationInput && suggestList) {
-    
-    // 1. Listen for typing (The "Input" Event)
     destinationInput.addEventListener("input", () => {
         const query = destinationInput.value.toLowerCase().trim();
         
-        // If input is empty, hide the dropdown
         if (!query) {
             suggestList.style.display = "none";
             return;
         }
 
-        // Filter packages based on Title or Region
         const suggestions = travelPackages.filter(pkg => 
             pkg.title.toLowerCase().includes(query) || 
             pkg.region.toLowerCase().includes(query)
-        );
+        ).slice(0, 5);
 
-        // Limit results to 5 to keep it clean
-        const topResults = suggestions.slice(0, 5);
-
-        // Render the list
-        if (topResults.length > 0) {
-            suggestList.innerHTML = topResults
+        if (suggestions.length > 0) {
+            suggestList.innerHTML = suggestions
                 .map(pkg => `<li data-title="${pkg.title}">📍 ${pkg.title}</li>`)
                 .join("");
-            
-            // Show the dropdown (CSS handles the floating position)
             suggestList.style.display = "block";
         } else {
-            // No matches found
-            suggestList.innerHTML = `<li style="cursor:default; color:#999;">No trips found...</li>`;
-            suggestList.style.display = "block";
-        }
-    });
-
-    // 2. Click on a suggestion
-    suggestList.addEventListener("click", (e) => {
-        // Check if the user clicked a list item (LI)
-        if (e.target.tagName === "LI" && !e.target.textContent.includes("No trips found")) {
-            // Get the title from the data attribute
-            const title = e.target.getAttribute("data-title");
-            
-            // Fill the input box
-            destinationInput.value = title;
-            
-            // Hide the list
             suggestList.style.display = "none";
         }
     });
 
-    // 3. Hide list if clicking anywhere else on the screen
+    suggestList.addEventListener("click", (e) => {
+        if (e.target.tagName === "LI") {
+            destinationInput.value = e.target.getAttribute("data-title");
+            suggestList.style.display = "none";
+            applyFilters(); // Update grid immediately
+        }
+    });
+
     document.addEventListener("click", (e) => {
         if (!suggestList.contains(e.target) && e.target !== destinationInput) {
             suggestList.style.display = "none";
         }
     });
-}
-/* =========================
-   SEARCH BUTTON LOGIC
-========================= */
-const searchButton = document.querySelector(".btn-search");
-const searchInput = document.getElementById("searchDestination");
-const resultsSection = document.getElementById("destinations"); // The section where cards appear
-
-if (searchButton && searchInput) {
-  searchButton.addEventListener("click", () => {
-    // 1. Get the value the user typed (e.g., "Bali")
-    const query = searchInput.value.toLowerCase().trim();
-
-    console.log("Searching for:", query); // Debugging
-
-    // 2. Filter the global 'travelPackages' list
-    // It checks if the Title OR the Region contains your text
-    const filteredTrips = travelPackages.filter(pkg => 
-      pkg.title.toLowerCase().includes(query) || 
-      pkg.region.toLowerCase().includes(query)
-    );
-
-    // 3. Render the specific results
-    renderPackages(filteredTrips);
-
-    // 4. CRITICAL: Scroll down so the user sees the result!
-    if (resultsSection) {
-      resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-    
-    // 5. (Optional) Update the section title to show what we found
-    const title = document.querySelector(".section-title");
-    if(title) {
-        if(query) title.textContent = `Search Results for "${searchInput.value}"`;
-        else title.textContent = "Featured Getaways";
-    }
-  });
 }
 
 /* =========================
@@ -163,32 +180,29 @@ function renderPackages(list) {
     </article>
   `).join("");
   
-  // Re-attach click events for Modals
   document.querySelectorAll(".package-card").forEach(card => {
       card.addEventListener("click", showDetails);
   });
 }
 
 /* =========================
-   BOOKING FORM - REFRESH ON SUCCESS
+   BOOKING FORM - SUCCESS + REFRESH
 ========================= */
 const bookingForm = document.getElementById("bookingForm");
 const successMessage = document.getElementById("successMessage");
 
 if (bookingForm) {
     bookingForm.addEventListener("submit", (e) => {
-        e.preventDefault(); // Stop immediate reload
+        e.preventDefault(); 
 
         const nameInput = document.getElementById("bookingName");
         const emailInput = document.getElementById("bookingEmail");
 
-        // Basic Validation
         if (!nameInput.value.trim() || !emailInput.value.trim()) {
             alert("Please fill in your Name and Email.");
             return;
         }
 
-        // 1. SHOW SUCCESS MESSAGE
         if (successMessage) {
             successMessage.innerHTML = `
                 <strong>✔ Request Sent!</strong><br>
@@ -203,16 +217,12 @@ if (bookingForm) {
             successMessage.style.marginTop = "15px";
             successMessage.style.border = "1px solid green";
             successMessage.style.textAlign = "center";
-            
+            successMessage.style.borderRadius = "8px";
+
             successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
             
-            // Clear form immediately
             bookingForm.reset();
-
-            // 2. REFRESH PAGE AFTER 5 SECONDS
-            setTimeout(() => {
-                window.location.reload(); 
-            }, 5000);
+            setTimeout(() => { window.location.reload(); }, 5000);
         }
     });
 }
